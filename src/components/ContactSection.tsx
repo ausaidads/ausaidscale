@@ -43,7 +43,7 @@ const ContactSection = () => {
           </form>
           <div className="flex justify-center gap-4 mt-8">
             {[
-              { icon: Linkedin, href: "#" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/ausaid-raza-419a67400" },
               { icon: Facebook, href: "#" },
               { icon: Instagram, href: "#" },
               { icon: Mail, href: "mailto:hello@ausaidraza.com" },
