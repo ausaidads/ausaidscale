@@ -3,7 +3,7 @@ import AnimatedSection from "./AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Send, Linkedin, Facebook, Instagram, Mail } from "lucide-react";
+import { Send, Linkedin, Facebook, Instagram, Mail, ExternalLink } from "lucide-react";
 
 const budgetOptions = ["Under $1K", "$1K – $5K", "$5K – $15K", "$15K – $50K", "$50K+"];
 
@@ -44,6 +44,7 @@ const ContactSection = () => {
           <div className="flex justify-center gap-4 mt-8">
             {[
               { icon: Linkedin, href: "https://www.linkedin.com/in/ausaid-raza-419a67400" },
+              { icon: ExternalLink, href: "https://www.upwork.com/freelancers/~012b4dbb32d7677f9e", label: "Upwork" },
               { icon: Facebook, href: "#" },
               { icon: Instagram, href: "#" },
               { icon: Mail, href: "mailto:hello@ausaidraza.com" },
