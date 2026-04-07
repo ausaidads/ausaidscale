@@ -51,6 +51,8 @@ const ContactSection = () => {
               <a
                 key={href}
                 href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-all"
               >
                 <Icon size={18} />
