@@ -1,6 +1,7 @@
 import AnimatedSection from "./AnimatedSection";
 import { Clock, DollarSign, Store, UserCheck, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import profilePhoto from "@/assets/profile-photo.png";
 
 const highlights = [
   { icon: Clock, label: "3+ Years Experience" },
@@ -14,8 +15,8 @@ const AboutSection = () => (
     <AnimatedSection>
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div className="flex justify-center">
-          <div className="w-56 h-56 md:w-72 md:h-72 rounded-full bg-secondary border-2 border-primary/30 flex items-center justify-center text-muted-foreground text-sm">
-            Photo
+          <div className="w-56 h-56 md:w-72 md:h-72 rounded-full border-2 border-primary/30 overflow-hidden">
+            <img src={profilePhoto} alt="Ausaid Raza" className="w-full h-full object-cover object-top" />
           </div>
         </div>
         <div>
