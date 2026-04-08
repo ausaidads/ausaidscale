@@ -48,11 +48,7 @@ const AboutSection = () => (
             ))}
           </div>
 
-          {/* Resume Button */}
-
-          <Button variant="outline" className="border-primary/40 hover:bg-primary/10 gap-2">
-            <Download size={16} /> Download Resume
-          </Button>
+         
         </div>
       </div>
     </AnimatedSection>
