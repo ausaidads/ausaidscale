@@ -18,20 +18,13 @@ const contactLinks = [
     href: "https://www.upwork.com/freelancers/~012b4dbb32d7677f9e",
     label: "Upwork",
   },
-  {
-    icon: <Mail size={20} />,
-    href: "mailto:rajpootusaid@gmail.com",
-    label: "Email",
-  },
-  {
-    icon: <MessageCircle size={20} />,
-    href: "https://wa.me/923037257305",
-    label: "WhatsApp",
-  },
+  { icon: <Mail size={20} />, href: "mailto:rajpootusaid@gmail.com", label: "Email" },
+  { icon: <MessageCircle size={20} />, href: "https://wa.me/923037257305", label: "WhatsApp" },
 ];
 
 const ContactSection = () => {
   const [budget, setBudget] = useState("");
+  const [formStatus, setFormStatus] = useState("");
 
   return (
     <section id="contact" className="section-container">
@@ -45,25 +38,37 @@ const ContactSection = () => {
       </AnimatedSection>
       <AnimatedSection delay={0.2}>
         <div className="max-w-xl mx-auto">
-          <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-            <Input placeholder="Your Name" className="bg-secondary border-border focus:border-primary" />
-            <Input type="email" placeholder="Your Email" className="bg-secondary border-border focus:border-primary" />
-            <Input placeholder="Business Type" className="bg-secondary border-border focus:border-primary" />
+          <form
+            className="space-y-4"
+            action="https://formspree.io/f/xqegjwbw"
+            method="POST"
+            onSubmit={() => setFormStatus("Thank you! Your message has been sent.")}
+          >
+            <Input name="name" placeholder="Your Name" className="bg-secondary border-border focus:border-primary" required />
+            <Input type="email" name="email" placeholder="Your Email" className="bg-secondary border-border focus:border-primary" required />
+            <Input name="company" placeholder="Business Type" className="bg-secondary border-border focus:border-primary" />
             <select
+              name="budget"
               value={budget}
               onChange={(e) => setBudget(e.target.value)}
               className="w-full rounded-lg border border-border bg-secondary px-3 py-2 text-sm text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
             >
-              <option value="" disabled>Monthly Ad Budget</option>
+              <option value="" disabled>
+                Monthly Ad Budget
+              </option>
               {budgetOptions.map((b) => (
-                <option key={b} value={b}>{b}</option>
+                <option key={b} value={b}>
+                  {b}
+                </option>
               ))}
             </select>
-            <Textarea placeholder="Your Message" rows={4} className="bg-secondary border-border focus:border-primary" />
-            <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
+            <Textarea name="message" placeholder="Your Message" rows={4} className="bg-secondary border-border focus:border-primary" required />
+            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
               <Send size={16} /> Send Message
             </Button>
+            {formStatus && <p className="text-green-500 mt-2">{formStatus}</p>}
           </form>
+
           <div className="flex justify-center gap-8 mt-10">
             {contactLinks.map(({ icon, href, label }) => (
               <a
@@ -76,9 +81,7 @@ const ContactSection = () => {
                 <span className="w-12 h-12 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:border-primary/40 transition-colors duration-200">
                   {icon}
                 </span>
-                <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors duration-200">
-                  {label}
-                </span>
+                <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors duration-200">{label}</span>
               </a>
             ))}
           </div>
