@@ -1,5 +1,4 @@
 import AnimatedSection from "./AnimatedSection";
-import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 const cases = [
@@ -47,14 +46,11 @@ const CaseStudiesSection = () => (
             <p className="text-sm text-muted-foreground mb-4">{c.strategy}</p>
             <h3 className="text-lg font-bold mb-3 text-primary">Results</h3>
             <p className="text-sm text-foreground font-medium mb-4">{c.results}</p>
-            <div className="flex flex-wrap gap-2 mb-6 mt-auto">
+            <div className="flex flex-wrap gap-2 mt-auto">
               {c.tags.map((t) => (
                 <span key={t} className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">{t}</span>
               ))}
             </div>
-            <Button variant="outline" size="sm" className="border-primary/40 hover:bg-primary/10 gap-1 w-fit">
-              View Case Study <ArrowRight size={14} />
-            </Button>
           </div>
         </AnimatedSection>
       ))}
