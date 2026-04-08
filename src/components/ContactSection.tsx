@@ -3,9 +3,32 @@ import AnimatedSection from "./AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Send, Linkedin, Mail, ExternalLink } from "lucide-react";
+import { Send, Mail, MessageCircle } from "lucide-react";
 
 const budgetOptions = ["Under $1K", "$1K – $5K", "$5K – $15K", "$15K – $50K", "$50K+"];
+
+const contactLinks = [
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+        <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l-.228-.2-1.086 1.067-.09-.076a8.154 8.154 0 0 1-2.093-3.106l-.048-.13.96-1.1-.145-.218c-.677-1.016-1.1-2.08-1.1-3.108 0-.944.358-1.682.978-2.017.247-.134.514-.2.794-.2h.016c1.004.013 2.157 1.202 2.97 2.543.27.447.508.907.707 1.37.138.32.505 1.238.505 2.066 0 .372-.07.715-.209 1.02-.207.458-.557.826-.97 1.043l-.126.063.104.09c.646.56 1.38.87 2.134.87.27 0 .536-.046.79-.138l.073-.027.023-.074c.103-.334.156-.685.156-1.044 0-2.942-2.39-5.332-5.332-5.332-2.942 0-5.332 2.39-5.332 5.332 0 2.942 2.39 5.332 5.332 5.332 1.345 0 2.573-.5 3.51-1.323l.072-.063-.063-.072a3.37 3.37 0 0 1-.348-.503z" />
+        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18.5c-4.687 0-8.5-3.813-8.5-8.5S7.313 3.5 12 3.5s8.5 3.813 8.5 8.5-3.813 8.5-8.5 8.5z" />
+      </svg>
+    ),
+    href: "https://www.upwork.com/freelancers/~012b4dbb32d7677f9e",
+    label: "Upwork",
+  },
+  {
+    icon: <Mail size={20} />,
+    href: "mailto:rajpootusaid@gmail.com",
+    label: "Email",
+  },
+  {
+    icon: <MessageCircle size={20} />,
+    href: "https://wa.me/923037257305",
+    label: "WhatsApp",
+  },
+];
 
 const ContactSection = () => {
   const [budget, setBudget] = useState("");
@@ -41,20 +64,21 @@ const ContactSection = () => {
               <Send size={16} /> Send Message
             </Button>
           </form>
-          <div className="flex justify-center gap-4 mt-8">
-            {[
-              { icon: Linkedin, href: "https://www.linkedin.com/in/ausaid-raza-419a67400" },
-              { icon: ExternalLink, href: "https://www.upwork.com/freelancers/~012b4dbb32d7677f9e", label: "Upwork" },
-              { icon: Mail, href: "https://mail.google.com/mail/?view=cm&fs=1&to=rajpootusaid@gmail.com" },
-            ].map(({ icon: Icon, href }) => (
+          <div className="flex justify-center gap-8 mt-10">
+            {contactLinks.map(({ icon, href, label }) => (
               <a
-                key={href}
+                key={label}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-all"
+                className="group flex flex-col items-center gap-2 transition-transform duration-200 hover:scale-110"
               >
-                <Icon size={18} />
+                <span className="w-12 h-12 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:border-primary/40 transition-colors duration-200">
+                  {icon}
+                </span>
+                <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors duration-200">
+                  {label}
+                </span>
               </a>
             ))}
           </div>
