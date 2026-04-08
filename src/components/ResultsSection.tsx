@@ -3,11 +3,11 @@ import AnimatedSection from "./AnimatedSection";
 
 const metrics = [
   { icon: "💰", value: "$500K+", label: "Total Ad Spend Managed" },
-  { icon: "📈", value: "4.2x", label: "Average ROAS Delivered" },
+  { icon: "📈", value: "7-10x", label: "Average ROAS Delivered" },
   { icon: "🎯", value: "30+", label: "Successful Campaigns" },
-  { icon: "🏪", value: "10+", label: "Brands Scaled" },
+  { icon: "🏪", value: "5+", label: "Brands Scaled" },
   { icon: "📉", value: "45%", label: "CPL Reduction (Up To)" },
-  { icon: "🔁", value: "80%", label: "Repeat Client Rate" },
+  { icon: "🔁", value: "6.5lacs", label: "Revenue Generated in 2days" },
 ];
 
 const Counter = ({ value }: { value: string }) => {
