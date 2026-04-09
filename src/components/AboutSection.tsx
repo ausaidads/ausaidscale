@@ -1,7 +1,7 @@
 import AnimatedSection from "./AnimatedSection";
 import { Clock, DollarSign, Store, UserCheck, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profilePhoto from "@/assets/profile-photo.png";
+import profilePhoto from "@/assets/profile-photo.webp";
 
 const highlights = [
   { icon: Clock, label: "2+ Years Experience" },
