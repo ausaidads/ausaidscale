@@ -37,14 +37,9 @@ const HeroSection = () => (
       <h1 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight mb-6">
         <span className="gradient-text">Ausaid Raza</span>
       </h1>
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
-      >
+      <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
         Meta Ads Performance Marketer | Scaling Brands with Data-Driven Paid Social Strategies
-      </motion.p>
+      </p>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
