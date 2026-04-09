@@ -34,14 +34,9 @@ const HeroSection = () => (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-20 blur-[120px] bg-primary pointer-events-none" />
 
     <div className="relative z-10 text-center px-4 max-w-4xl">
-      <motion.h1
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight mb-6"
-      >
+      <h1 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight mb-6">
         <span className="gradient-text">Ausaid Raza</span>
-      </motion.h1>
+      </h1>
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
