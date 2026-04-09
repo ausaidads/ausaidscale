@@ -1,46 +1,148 @@
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ================= BASE VARIABLES ================= */
 @layer base {
   :root {
-  --background: 210 30% 5%; /* deep dark */
-  --foreground: 0 0% 95%;
+    /* BACKGROUND & TEXT */
+    --background: 210 30% 5%;
+    --foreground: 0 0% 95%;
 
-  --card: 210 25% 8%;
-  --card-foreground: 0 0% 95%;
+    /* CARDS */
+    --card: 210 25% 8%;
+    --card-foreground: 0 0% 95%;
 
-  --popover: 210 25% 8%;
-  --popover-foreground: 0 0% 95%;
+    --popover: 210 25% 8%;
+    --popover-foreground: 0 0% 95%;
 
-  --primary: 84 100% 50%; /* neon green */
-  --primary-foreground: 0 0% 0%;
+    /* 🔥 NEON GREEN PRIMARY */
+    --primary: 84 100% 50%;
+    --primary-foreground: 0 0% 0%;
 
-  --secondary: 210 20% 12%;
-  --secondary-foreground: 0 0% 95%;
+    --secondary: 210 20% 12%;
+    --secondary-foreground: 0 0% 95%;
 
-  --muted: 210 15% 15%;
-  --muted-foreground: 0 0% 65%;
+    --muted: 210 15% 15%;
+    --muted-foreground: 0 0% 65%;
 
-  --accent: 84 100% 50%; /* neon green */
-  --accent-foreground: 0 0% 0%;
+    --accent: 84 100% 50%;
+    --accent-foreground: 0 0% 0%;
 
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 98%;
+    /* STATUS COLORS */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-  --border: 210 15% 18%;
-  --input: 210 15% 18%;
-  --ring: 84 100% 50%;
+    /* BORDERS */
+    --border: 210 15% 18%;
+    --input: 210 15% 18%;
+    --ring: 84 100% 50%;
 
-  --radius: 0.75rem;
+    /* RADIUS */
+    --radius: 0.75rem;
 
-  /* 🔥 GLOW EFFECTS */
-  --glow-primary: 84 100% 50%;
-  --gradient-dark: linear-gradient(135deg, hsl(210 30% 5%), hsl(210 25% 10%));
-  --gradient-card: linear-gradient(135deg, hsl(210 25% 10%), hsl(210 20% 8%));
+    /* 🌟 EFFECTS */
+    --glow-primary: 84 100% 50%;
+    --gradient-dark: linear-gradient(135deg, hsl(210 30% 5%), hsl(210 25% 10%));
+    --gradient-card: linear-gradient(135deg, hsl(210 25% 10%), hsl(210 20% 8%));
 
-  --shadow-glow: 0 0 30px -5px hsl(84 100% 50% / 0.4);
-  --shadow-glow-lg: 0 0 60px -10px hsl(84 100% 50% / 0.3);
+    --shadow-glow: 0 0 30px -5px hsl(84 100% 50% / 0.4);
+    --shadow-glow-lg: 0 0 60px -10px hsl(84 100% 50% / 0.3);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', sans-serif;
+    background-image: var(--gradient-dark);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ================= COMPONENTS ================= */
+@layer components {
+
+  /* 🔥 GLOW CARD */
+  .glow-card {
+    @apply relative overflow-hidden rounded-xl border border-border bg-card transition-all duration-300;
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0);
+  }
+
+  .glow-card:hover {
+    border-color: hsl(var(--primary) / 0.5);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-5px);
+  }
+
+  /* 🌟 GRADIENT TEXT */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--primary)),
+      hsl(84 100% 65%)
+    );
+  }
+
+  /* 📦 SECTION CONTAINER */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28;
+  }
+
+  /* ✨ FLOATING METRICS */
+  .floating-metric {
+    @apply absolute text-primary/20 font-bold pointer-events-none select-none;
+    animation: float-fade 6s ease-in-out infinite;
+  }
+
+  /* 🔘 BUTTON STYLE */
+  .btn-neon {
+    @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300;
+    background-color: hsl(var(--primary));
+    color: black;
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.5);
+  }
+
+  .btn-neon:hover {
+    background-color: hsl(84 100% 60%);
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.8);
+  }
+
+  /* 💡 GLOW ELEMENT */
+  .glow {
+    box-shadow: 0 0 25px hsl(var(--primary) / 0.6);
+  }
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes float-fade {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  30%, 70% {
+    opacity: 0.2;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes counter-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px -5px hsl(var(--primary) / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px -5px hsl(var(--primary) / 0.5);
+  }
+}
+
+/* 🔢 COUNTER CARD */
+.counter-card {
+  animation: counter-glow 3s ease-in-out infinite;
 }
