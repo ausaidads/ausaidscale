@@ -3,7 +3,7 @@ import AnimatedSection from "./AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Send, Mail, MessageCircle } from "lucide-react";
+import { Send, MessageCircle } from "lucide-react";
 
 const budgetOptions = ["Under $1K", "$1K – $5K", "$5K – $15K", "$15K – $50K", "$50K+"];
 
