@@ -58,6 +58,9 @@ const HeroSection = () => (
         </Button>
       </motion.div>
     </div>
+
+    {/* Wave transition at bottom */}
+    <div className="wave-bg" />
   </section>
 );
 
