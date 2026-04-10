@@ -1,14 +1,30 @@
 /* =========================
-   GLOBAL RESET
+   TAILWIND (REQUIRED)
 ========================= */
-* {
-  margin: 0;
-  padding: 0;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   GOOGLE FONT
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* =========================
+   GLOBAL RESET + BASE
+========================= */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  font-family: 'Inter', sans-serif;
   background: #05070d;
   color: #ffffff;
   line-height: 1.6;
@@ -16,12 +32,12 @@ body {
 }
 
 /* =========================
-   ROOT COLORS (THEME)
+   ROOT COLORS
 ========================= */
 :root {
   --primary: #00e0ff;
+  --primary-dark: #007bff;
   --secondary: #0a0f1c;
-  --accent: #00bcd4;
   --text: #ffffff;
   --muted: #9aa4b2;
   --card-bg: rgba(255, 255, 255, 0.05);
@@ -29,77 +45,50 @@ body {
 }
 
 /* =========================
-   NAVBAR
+   DEFAULT ELEMENTS
+========================= */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* =========================
+   NAVBAR (OPTIONAL CUSTOM)
 ========================= */
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 8%;
-  background: transparent;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-nav a {
-  color: var(--text);
-  text-decoration: none;
-  margin-left: 25px;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-nav a:hover {
-  color: var(--primary);
+  backdrop-filter: blur(10px);
+  background: rgba(5, 7, 13, 0.7);
 }
 
 /* =========================
    HERO SECTION
 ========================= */
 .hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 100px 8%;
-  min-height: 100vh;
+  position: relative;
   background: radial-gradient(circle at 70% 30%, #0b1224, #05070d 70%);
 }
 
-.hero-text {
-  max-width: 550px;
-}
-
-.hero h1 {
-  font-size: 56px;
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -1px;
-}
-
-.hero h1 span {
-  color: var(--primary);
-}
-
-.hero p {
-  margin-top: 20px;
-  color: var(--muted);
-  font-size: 16px;
-}
-
 /* =========================
-   BUTTON
+   BUTTON (CUSTOM CLASS)
 ========================= */
 .btn {
-  margin-top: 30px;
-  display: inline-block;
-  padding: 14px 28px;
-  background: linear-gradient(90deg, #00e0ff, #007bff);
-  border-radius: 30px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
   color: #000;
   font-weight: 600;
-  text-decoration: none;
-  transition: 0.3s ease;
+  border-radius: 999px;
+  padding: 12px 26px;
+  transition: all 0.3s ease;
   box-shadow: 0 0 20px rgba(0, 224, 255, 0.3);
 }
 
@@ -109,35 +98,14 @@ nav a:hover {
 }
 
 /* =========================
-   SECTION TITLE
+   CARD STYLE
 ========================= */
-.section-title {
-  text-align: center;
-  font-size: 36px;
-  font-weight: 700;
-  margin: 80px 0 40px;
-}
-
-/* =========================
-   CARDS / SERVICES
-========================= */
-.cards {
-  display: flex;
-  gap: 20px;
-  padding: 0 8%;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .card {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  padding: 30px;
+  backdrop-filter: blur(12px);
   border-radius: 20px;
-  width: 300px;
-  text-align: center;
-  backdrop-filter: blur(10px);
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .card:hover {
@@ -146,42 +114,14 @@ nav a:hover {
   box-shadow: 0 0 25px rgba(0, 224, 255, 0.2);
 }
 
-.card h3 {
-  margin-top: 15px;
-  font-size: 20px;
-}
-
-.card p {
-  margin-top: 10px;
-  font-size: 14px;
-  color: var(--muted);
-}
-
 /* =========================
-   ICON STYLE
+   GRID BOX
 ========================= */
-.icon {
-  font-size: 30px;
-  color: var(--primary);
-  margin-bottom: 10px;
-}
-
-/* =========================
-   GRID SECTION (FEATURES)
-========================= */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  padding: 0 8%;
-  gap: 20px;
-}
-
 .grid-box {
-  padding: 25px;
   background: var(--card-bg);
-  border-radius: 15px;
   border: 1px solid var(--border);
-  transition: 0.3s;
+  border-radius: 15px;
+  transition: all 0.3s ease;
 }
 
 .grid-box:hover {
@@ -190,19 +130,15 @@ nav a:hover {
 }
 
 /* =========================
-   FOOTER
+   TEXT STYLES
 ========================= */
-footer {
-  text-align: center;
-  padding: 40px 20px;
-  margin-top: 80px;
-  background: #02040a;
-  color: var(--muted);
-  font-size: 14px;
+.section-title {
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 /* =========================
-   GLOW EFFECTS
+   GLOW EFFECT
 ========================= */
 .glow {
   position: absolute;
@@ -221,22 +157,4 @@ footer {
 .glow.bottom {
   bottom: -100px;
   left: -100px;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .hero h1 {
-    font-size: 40px;
-  }
-
-  nav {
-    padding: 20px;
-  }
 }
