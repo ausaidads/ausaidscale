@@ -11,7 +11,7 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 const Index = () => (
-  <div className="min-h-screen bg-background">
+  <div className="min-h-screen bg-background bg-animated">
     <Navbar />
     <HeroSection />
     <AboutSection />

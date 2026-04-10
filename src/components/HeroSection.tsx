@@ -12,7 +12,7 @@ const metrics = [
 ];
 
 const HeroSection = () => (
-  <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <section className="relative min-h-screen flex items-center justify-center overflow-hidden z-[1]">
     {/* Floating metrics */}
     {metrics.map((m, i) => (
       <span
@@ -58,6 +58,9 @@ const HeroSection = () => (
         </Button>
       </motion.div>
     </div>
+
+    {/* Wave transition at bottom */}
+    <div className="wave-bg" />
   </section>
 );
 
