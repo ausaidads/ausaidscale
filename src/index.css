@@ -66,11 +66,111 @@
   body {
     @apply bg-background text-foreground font-sans;
     font-family: 'Inter', sans-serif;
-    background-image: var(--gradient-dark);
+    background-color: hsl(220 40% 6%);
   }
 
   html {
     scroll-behavior: smooth;
+  }
+}
+
+/* ================= ANIMATED BACKGROUND ================= */
+
+/* Subtle animated gradient mesh */
+.bg-animated {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-animated::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 40%, hsl(190 100% 55% / 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 20%, hsl(220 80% 50% / 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 70% 60% at 50% 90%, hsl(200 100% 60% / 0.04) 0%, transparent 50%);
+  animation: bg-shift 20s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Animated grid overlay */
+.bg-animated::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(hsl(190 100% 55% / 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(190 100% 55% / 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 20%, transparent 70%);
+}
+
+/* Wave shapes */
+.wave-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.wave-bg::before,
+.wave-bg::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: -10%;
+  width: 120%;
+  height: 100%;
+  border-radius: 40% 45% 0 0;
+  animation: wave-move 12s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.wave-bg::before {
+  background: hsl(190 100% 55% / 0.03);
+}
+
+.wave-bg::after {
+  background: hsl(200 100% 60% / 0.02);
+  animation-delay: -4s;
+  animation-duration: 15s;
+  border-radius: 45% 40% 0 0;
+}
+
+@keyframes bg-shift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-2%, 1%) scale(1.02);
+  }
+  100% {
+    transform: translate(1%, -1%) scale(1);
+  }
+}
+
+@keyframes wave-move {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(-3%) translateY(-10px);
   }
 }
 
@@ -102,6 +202,8 @@
   /* 📦 SECTION CONTAINER */
   .section-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28;
+    position: relative;
+    z-index: 1;
   }
 
   /* ✨ FLOATING METRICS */
@@ -142,16 +244,17 @@
   }
 }
 
-@keyframes counter-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px -5px hsl(var(--primary) / 0.2);
-  }
-  50% {
-    box-shadow: 0 0 40px -5px hsl(var(--primary) / 0.5);
-  }
+/* 🔢 COUNTER CARD — static glow, no animation */
+.counter-card {
+  box-shadow: 0 0 20px -5px hsl(var(--primary) / 0.15);
 }
 
-/* 🔢 COUNTER CARD */
-.counter-card {
-  animation: counter-glow 3s ease-in-out infinite;
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .bg-animated::before,
+  .wave-bg::before,
+  .wave-bg::after,
+  .floating-metric {
+    animation: none !important;
+  }
 }
